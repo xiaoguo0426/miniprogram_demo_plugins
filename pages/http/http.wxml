@@ -1,0 +1,7 @@
+<view class="container">
+      <view class="btn-area">
+            <view class="body-view">
+                  <button type="default" bindtap="postHttp">POST请求</button>
+            </view>
+      </view>
+</view>

@@ -1,0 +1,38 @@
+<!--pages/test/test.wxml-->
+<text>pages/test/test.wxml</text>
+<view class="page-body">
+    <view class="btn-area">
+        <button type="default" bindtap="modalTap">有标题的modal</button>
+        <button type="default" bindtap="noTitlemodalTap">无标题的modal</button>
+    </view>
+
+    <view class="btn-area">
+        <view class="body-view">
+            <button type="default" bindtap="toast1Tap">点击弹出默认toast</button>
+        </view>
+        <view class="body-view">
+            <button type="default" bindtap="toast2Tap">点击弹出设置duration的toast</button>
+        </view>
+        <view class="body-view">
+            <button type="default" bindtap="toast3Tap">点击弹出显示loading的toast</button>
+        </view>
+        <view class="body-view">
+            <button type="default" bindtap="hideToast">点击隐藏toast</button>
+        </view>
+        <view class="body-view">
+            <button type="default" bindtap="chooseAddress">获取收货地址</button>
+        </view>
+        <view class="body-view">
+            <button type="default" bindtap="appConfig">小程序设置</button>
+        </view>
+        <view class="body-view">
+            <button type="default" bindtap="weRun">小程序运动</button>
+        </view>
+        <view class="body-view">
+            <button type="default" bindtap="dilivery">快递查询</button>
+        </view>
+        <view class="body-view">
+            <button type="default" bindtap="downloadFile">下载图片</button>
+        </view>
+    </view>
+</view>

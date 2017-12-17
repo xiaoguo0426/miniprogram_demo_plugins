@@ -1,0 +1,29 @@
+<!--index.wxml-->
+<view class="container">
+    <view class="userinfo">
+        <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+        <block wx:else>
+            <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+            <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+        </block>
+    </view>
+    <view class="usermotto">
+        <text class="user-motto">{{motto}}</text>
+    </view>
+    <view>
+        <button type="default" bindtap='saveMemberInfo'>存储到数据库</button>
+    </view>
+    <view>
+        <button type="default" bindtap='getMemberInfo'>获取信息</button>
+    </view>
+    <navigator url="/pages/msg/msg?title=navigate" hover-class="navigator-hover"><button type="default">msg页面</button></navigator>
+    <navigator url="/pages/http/http?title=navigate" hover-class="navigator-hover"><button type="default">http页面</button></navigator>
+    <view>
+        {{nickname}}
+    </view>
+    <view class="btn-area">
+        <navigator url="/pages/test/test" hover-class="navigator-hover">
+            <button type="default">跳转到test页面</button>
+        </navigator>
+    </view>
+</view>

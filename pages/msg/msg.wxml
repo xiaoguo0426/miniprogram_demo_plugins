@@ -1,0 +1,29 @@
+<!--pages/msg/msg.wxml-->
+<view class="container">
+      <view class="btn-area">
+            <view class="body-view">
+                  <button type="default" bindtap="toast1">点击弹出默认toast</button>
+            </view>
+            <view class="body-view">
+                  <button type="default" bindtap="toast2">成功提示</button>
+            </view>
+            <view class="body-view">
+                  <button type="default" bindtap="toast5">失败提示</button>
+            </view>
+            <view class="body-view">
+                  <button type="default" bindtap="toast3">点击弹出显示loading的toast</button>
+            </view>
+            <view class="body-view">
+                  <button type="default" bindtap="hideToast">点击隐藏toast</button>
+            </view>
+            <view class="body-view">
+                  <button type="default" bindtap="toast4">显示loading的toast需要手动关闭</button>
+            </view>
+            <view class="body-view">
+                  <button type="default" bindtap="toast6">导航栏显示loading</button>
+            </view>
+            <view class="body-view">
+                  <button type="default" bindtap="toast7">导航栏关闭oading</button>
+            </view>
+      </view>
+</view>
