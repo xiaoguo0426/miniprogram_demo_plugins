@@ -1,15 +1,17 @@
 {
-      "pages": [
-            "pages/index/index",
-            "pages/logs/logs",
-            "pages/test/test",
-            "pages/msg/msg",
-            "pages/http/http"
-      ],
-      "window": {
-            "backgroundTextStyle": "light",
-            "navigationBarBackgroundColor": "#fff",
-            "navigationBarTitleText": "WeChat",
-            "navigationBarTextStyle": "black"
-      }
+    "pages": [
+        "pages/index/index",
+        "pages/logs/logs",
+        "pages/test/test",
+        "pages/msg/msg",
+        "pages/map/map",
+        "pages/socket/socket",
+        "pages/login/login"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#FFF",
+        "navigationBarTitleText": "WeChat",
+        "navigationBarTextStyle": "black"
+    }
 }

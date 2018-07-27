@@ -10,7 +10,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "1.6.0",
 	"appid": "wx081647d112c1eec9",
-	"projectname": "demo1",
+	"projectname": "miniprogram_demo_plugins",
 	"miniprogramRoot": "./",
 	"condition": {
 		"search": {

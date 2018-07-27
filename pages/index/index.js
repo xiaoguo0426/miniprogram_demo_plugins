@@ -31,6 +31,7 @@ Page({
           userInfo: res.userInfo,
           hasUserInfo: true
         })
+        console.log(res.userInfo);
         console.log(typeof res.userInfo);
         // http.post('http://1tech.test.72dns.net/wx_app/test.php', res.userInfo,function(res){
         //     console.log(res);
@@ -73,6 +74,7 @@ Page({
       }
   },
   getUserInfo: function(e) {
+
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
@@ -86,6 +88,10 @@ Page({
       });
   },
   getMemberInfo:function(){
+      wx.setStorage({
+          key: 'test',
+          data: '1111',
+      })
       const that = this;
       http.get('https://dev-gz.yz168.cc/server=guoyiti/wx_app/get.php', {}, function (res) {
           console.log(res);
@@ -93,5 +99,9 @@ Page({
               nickname:res.data.nickname
           });
       });
+  },
+  onMyEvent:function(e){
+      console.log('自定义组件触发事件');
+      console.log(e);
   }
 })

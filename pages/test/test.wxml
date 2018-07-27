@@ -1,5 +1,4 @@
 <!--pages/test/test.wxml-->
-<text>pages/test/test.wxml</text>
 <view class="page-body">
     <view class="btn-area">
         <button type="default" bindtap="modalTap">有标题的modal</button>
@@ -30,6 +29,9 @@
         </view>
         <view class="body-view">
             <button type="default" bindtap="dilivery">快递查询</button>
+        </view>
+        <view class="body-view">
+            <button type="default" bindtap="scan">扫码查询</button>
         </view>
         <view class="body-view">
             <button type="default" bindtap="downloadFile">下载图片</button>

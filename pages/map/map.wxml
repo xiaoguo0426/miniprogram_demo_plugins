@@ -1,0 +1,41 @@
+<view class="container">
+    <view class="btn-area">
+        <view class="body-view">
+            <button type="default" bindtap="getMyLocation">获取经纬度</button>
+        </view>
+        <text>纬度：{{latitude}}</text>
+        <text>经度：{{longitude}}</text>
+    </view>
+    <view class="btn-area">
+        <text>速度：{{speed}}</text>
+        <text>精确度：{{accuracy}}</text>
+    </view>
+    <view class="btn-area">
+        <text>高度：{{altitude}}</text>
+        <text>垂直精度：{{verticalAccuracy}}</text>
+    </view>
+    <view class="btn-area">
+        <text>水平精度：{{horizontalAccuracy}}</text>
+    </view>
+    <view class="btn-area">
+        <view class="body-view">
+            <button type="default" bindtap="openMyLocation">打开位置</button>
+        </view>
+    </view>
+        <view class="btn-area">
+        <view class="body-view">
+            <button type="default" bindtap="chooseMyLocation">选择位置</button>
+        </view>
+    </view>
+    <view class="btn-area">
+        <text>位置名称：{{name}}</text>
+        <text>地点名称：{{address}}</text>
+    </view>
+
+    <map id="myMap" show-location />
+
+<button type="primary" bindtap="getCenterLocation">获取位置</button>
+<button type="primary" bindtap="moveToLocation">移动位置</button>
+<button type="primary" bindtap="translateMarker">移动标注</button>
+<button type="primary" bindtap="includePoints">缩放视野展示所有经纬度</button>
+</view>

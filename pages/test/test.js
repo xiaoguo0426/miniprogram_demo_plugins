@@ -1,4 +1,5 @@
 const http = require('../../utils/http.js')
+const http2 = require('../../utils/http2.js')
 const msg = require('../../utils/msg.js')
 // pages/test/test.js
 Page({
@@ -183,9 +184,20 @@ Page({
             }
         };
 
-        http.get(url, data, function (res) {
+        // http.get(url, data, function (res) {
+        //     console.log(res);
+        // });
+
+        let rq = http2.get(url, data, function (res) {
+            console.log(1111);
             console.log(res);
         });
+        rq.abort();//取消发送请求
+        console.log(rq);
+
+        // http2.get(url, data);
+
+        //http.abort();
     },
     downloadFile: function () {
         wx.downloadFile({
@@ -207,6 +219,17 @@ Page({
                         }
                     })
                 }
+            }
+        })
+    },
+    scan:function(){
+        wx.scanCode({
+            onlyFromCamera: true,
+            success: (res) => {
+                console.log(res)
+                wx.showToast({
+                    title: res.result
+                })
             }
         })
     }
