@@ -1,0 +1,20 @@
+markdown快捷键
+
+"shift-ctrl-K": "插入链接"
+"shift-ctrl-I": "插入图片"
+"ctrl-i":       "斜体"
+"ctrl-b":       "粗体"
+"ctrl-'":       "引用"
+'ctrl-`':       "代码块"
+"ctrl-h":       "删除线"
+"ctrl-1":       "h1"
+"ctrl-2":       "h2"
+"ctrl-3":       "h3"
+"ctrl-4":       "h4"
+"ctrl-5":       "h5"
+
+
+//其他更多操作
+Shift + Ctrl + P
+
+=> markdown

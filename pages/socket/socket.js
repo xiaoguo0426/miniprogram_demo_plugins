@@ -1,5 +1,5 @@
 // pages/socket/socket.js
-const socket = require('../../utils/socket.js')
+// const socket = require('../../utils/socket.js')
 const app = getApp();
 Page({
 
@@ -14,10 +14,12 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-        
+        console.log(app.globalData.global_socket);
         app.globalData.global_socket.listen('websocket-socket',function(res){
-            console.log('websocket-socket');
+
+            console.log('接收到自定义事件 websocket-socket');
             console.log(res);
+            app.globalData.global_socket.remove('websocket-socket')
         });
 
 
@@ -46,6 +48,7 @@ Page({
         // },2000);
 
         // console.log(app.globalData.global_socket)
+
         // app.globalData.global_socket.close();
         
     },

@@ -6,7 +6,9 @@
         "pages/msg/msg",
         "pages/map/map",
         "pages/socket/socket",
-        "pages/login/login"
+        "pages/login/login",
+        "pages/http/http",
+        "pages/wifi/index"
     ],
     "window": {
         "backgroundTextStyle": "light",

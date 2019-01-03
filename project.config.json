@@ -8,10 +8,9 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "1.6.0",
+	"libVersion": "2.2.1",
 	"appid": "wx081647d112c1eec9",
 	"projectname": "miniprogram_demo_plugins",
-	"miniprogramRoot": "./",
 	"condition": {
 		"search": {
 			"current": -1,
@@ -21,8 +20,15 @@
 			"current": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
 		"miniprogram": {
-			"current": 3,
+			"current": 4,
 			"list": [
 				{
 					"id": -1,
@@ -46,7 +52,14 @@
 					"id": -1,
 					"name": "HTTP请求页",
 					"pathName": "pages/http/http",
+					"query": "",
 					"scene": "1001"
+				},
+				{
+					"id": -1,
+					"name": "wifi页面",
+					"pathName": "pages/wifi/index",
+					"query": ""
 				}
 			]
 		}

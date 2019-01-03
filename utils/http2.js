@@ -2,13 +2,13 @@ function Http() {
     let obj = new Object();
     obj.callbacks_clone = {
         success: function(res) {
-            console.log('默认成功处理方法');
+            // console.log('默认成功处理方法');
         },
         fail: function(res) {
-            console.log('默认错误处理方法');
+            // console.log('默认错误处理方法');
         },
         complete: function(res) {
-            console.log('默认完成处理方法');
+            // console.log('默认完成处理方法');
         }
     };
     obj.callbacks = obj.callbacks_clone;
@@ -60,17 +60,6 @@ function Http() {
             //   dataType: 'JSON',
             success: function(res) {
                 try {
-                    if (res.statusCode != 200) {
-                        // 状态码401表示token异常，需要重新获取token，然后重新发业务请求
-                        if (res.statusCode == 401) {
-                            let cb = function() {
-                                self.load(url, type, data, callback);
-                            }
-                            return;
-                        }
-                        callbacks.fail.apply(this, [res]);
-                        return;
-                    }
                     typeof callbacks.success === 'function' && callbacks.success.call(this, res.data);
                 } catch (e) {
                     console.log(e);
@@ -83,36 +72,6 @@ function Http() {
                 typeof callbacks.complete === 'function' && callbacks.complete.apply(this, res);
             }
         })
-        // this.reset();
-    };
-    obj.handle = function(res) {
-        //todo
-        //这里的方法还没有想到
-    };
-    obj.reset = function() {
-        this.url = "";
-        this.data = {};
-        this.callbacks = this.callbacks_clone;
-    };
-    obj.setUrl = function(url) {
-        this.url = url;
-        return this;
-    };
-    obj.setHeader = function(header) {
-        this.header = header;
-        return this;
-    }
-    obj.setData = function(data) {
-        this.data = data;
-        return this;
-    };
-    obj.success = function(fn) {
-        (typeof fn === 'function') && (this.callbacks.success = fn);
-        return this;
-    };
-    obj.fail = function(fn) {
-        (typeof fn === 'function') && (this.callbacks.fail = fn);
-        return this;
     };
 
     return obj;

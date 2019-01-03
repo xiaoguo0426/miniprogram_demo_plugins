@@ -13,17 +13,18 @@ Page({
         accuracy: 0,
         altitude: 0,
         verticalAccuracy: 0,
-        horizontalAccuracy: 0
+        horizontalAccuracy: 0,
+        address: ''
     },
-    onReady: function (e) {
+    onReady: function(e) {
         // 使用 wx.createMapContext 获取 map 上下文
         this.mapCtx = wx.createMapContext('myMap')
     },
-    getMyLocation: function () {
+    getMyLocation: function() {
         const that = this;
         wx.getLocation({
             type: 'wgs84',
-            success: function (res) {
+            success: function(res) {
                 var latitude = res.latitude
                 var longitude = res.longitude
                 var speed = res.speed
@@ -45,10 +46,10 @@ Page({
             }
         })
     },
-    openMyLocation: function () {
+    openMyLocation: function() {
         wx.getLocation({
             type: 'gcj02', //返回可以用于wx.openLocation的经纬度
-            success: function (res) {
+            success: function(res) {
                 var latitude = res.latitude
                 var longitude = res.longitude
                 wx.openLocation({
@@ -59,10 +60,10 @@ Page({
             }
         })
     },
-    chooseMyLocation: function () {
+    chooseMyLocation: function() {
         const that = this;
         wx.chooseLocation({
-            success: function (res) {
+            success: function(res) {
                 console.log(res);
                 let name = res.name;
                 let address = res.address;
@@ -78,18 +79,18 @@ Page({
             }
         });
     },
-    getCenterLocation: function () {
+    getCenterLocation: function() {
         this.mapCtx.getCenterLocation({
-            success: function (res) {
+            success: function(res) {
                 console.log(res.longitude)
                 console.log(res.latitude)
             }
         })
     },
-    moveToLocation: function () {
+    moveToLocation: function() {
         this.mapCtx.moveToLocation()
     },
-    translateMarker: function () {
+    translateMarker: function() {
         this.mapCtx.translateMarker({
             markerId: 0,
             autoRotate: true,
@@ -103,7 +104,7 @@ Page({
             }
         })
     },
-    includePoints: function () {
+    includePoints: function() {
         this.mapCtx.includePoints({
             padding: [10],
             points: [{

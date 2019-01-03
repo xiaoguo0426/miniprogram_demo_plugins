@@ -18,6 +18,9 @@
         <text>水平精度：{{horizontalAccuracy}}</text>
     </view>
     <view class="btn-area">
+        <text>当前地址：{{horizontalAccuracy}}</text>
+    </view>
+    <view class="btn-area">
         <view class="body-view">
             <button type="default" bindtap="openMyLocation">打开位置</button>
         </view>

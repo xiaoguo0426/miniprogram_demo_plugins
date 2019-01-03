@@ -1,3 +1,28 @@
+let heartCheck = {
+    timeout: 10000,
+    timeoutObj: null,
+    serverTimeoutObj: null,
+    reset: function() {
+        clearTimeout(this.timeoutObj);
+        clearTimeout(this.serverTimeoutObj);
+        return this;
+    },
+    start: function() {
+        this.timeoutObj = setTimeout(() => {
+            console.log("发送ping");
+            wx.sendSocketMessage({
+                data: "ping",
+                // success(){
+                //  console.log("发送ping成功");
+                // }
+            });
+            this.serverTimeoutObj = setTimeout(() => {
+                wx.closeSocket();
+            }, this.timeout);
+        }, this.timeout);
+    }
+};
+
 function Socket() {
     this.host = "ws://122.114.154.166:9501";
     // this.port = "9501";
@@ -8,45 +33,53 @@ function Socket() {
 }
 Socket.prototype = {
     // 订阅事件
-    on: function(eventType, handler) {
+    on: function(eventType, callback) {
         var self = this;
-        if (!(eventType in self.handlers)) {
-            self.handlers[eventType] = [];
-        }
-        self.handlers[eventType].push(handler);
-        return this;
+        // if (!(eventType in self.handlers)) {
+        //     self.handlers[eventType] = [];
+        // }
+        typeof callback === 'function' && (self.handlers[eventType] = callback);
     },
-    listen: function(eventType, handler) {
+    listen: function(eventType, callback) {
         var self = this;
-        if (!(eventType in self.listenList)) {
-            self.listenList[eventType] = [];
-        }
-        self.listenList[eventType].push(handler);
+        console.log("监听了自定义事件：" + eventType);
+        console.log(self.listenList[eventType]);
+        // if (!(eventType in self.listenList)) {
+        //     self.listenList[eventType] = [];
+        // }
+        typeof callback === 'function' && (self.listenList[eventType] = callback);
+        console.log(self.listenList[eventType]);
     },
     // 触发事件(发布事件)
     emit: function(eventType, res) {
-        var self = this;
-        for (var i = 0; i < self.handlers[eventType].length; i++) {
-            self.handlers[eventType][i].call(self, res);
+        // var self = this;
+        // for (var i = 0; i < self.handlers[eventType].length; i++) {
+        //     self.handlers[eventType].call(self, res);
+        // }
+        if (eventType in this.handlers) {
+            this.handlers[eventType].call(this, res)
         }
     },
     // 删除原生订阅事件
     off: function(eventType) {
         let eventList = this.handlers;
         let that = this;
-        if (eventList[eventType] !== undefined){
+        if (eventList[eventType] !== undefined) {
             delete eventList[eventType];
             this.handlers = eventList;
         }
     },
-    remove: function (eventType){
+    remove: function(eventType) {
+        console.log("移除了自定义监听事件" + eventType);
         let eventList = this.listenList;
         console.log(eventList);
         let that = this;
         if (eventList[eventType] !== undefined) {
             delete eventList[eventType];
-            this.listenList = eventList;
+            console.log(eventList);
+            that.listenList = eventList;
         }
+        console.log(that.listenList);
     },
     run: function() {
         let that = this;
@@ -55,8 +88,7 @@ Socket.prototype = {
         const socketTask = wx.connectSocket({
             url: that.host,
             method: "GET",
-            header: {
-            },
+            header: {},
             success: function(res) {
                 let eventType = 'connectSocket';
                 if (that.handlers[eventType]) {
@@ -75,14 +107,17 @@ Socket.prototype = {
             }
         });
         socketTask.onMessage(function(res) {
-            // console.log('收到服务器内容：' + res.data)
+            console.log('收到服务器内容：' + res.data)
             let json = JSON.parse(res.data);
             let data = json.data;
             let eventType = json.event;
-            if (that.listenList[eventType]) {
-                for (var i = 0; i < that.listenList[eventType].length; i++) {
-                    that.listenList[eventType][i].call(that, data);
-                }
+            //console.log(typeof that.listenList[eventType]);
+            //console.log(that.listenList[eventType]);
+            //console.log(eventType in that.listenList);
+            console.log(eventType);
+            console.log(that.listenList);
+            if (eventType in that.listenList) {
+                that.listenList[eventType].call(that, data);
             } else {
                 //console.log('默认收到信息成功回调');
             }
@@ -107,11 +142,13 @@ Socket.prototype = {
         });
 
         this.socketTask = socketTask;
-
+        console.log(this);
         return this;
     },
-    close:function(){
+    close: function() {
+        console.log(this.status);
         this.status && this.socketTask.close();
+        // this.socketTask.close();
     }
 };
 

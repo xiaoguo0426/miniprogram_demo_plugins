@@ -1,0 +1,20 @@
+<!--pages/msg/msg.wxml-->
+<view class="container">
+    <view class="btn-area">
+        <view class="body-view">
+            <button type="default" bindtap="initWifi">初始化wifi</button>
+        </view>
+        <view class="body-view">
+            <button type="default" bindtap="stopWifi">停止wifi</button>
+        </view>
+        <view class="body-view">
+            <button type="default" bindtap="connectWifi">连接Wifi</button>
+        </view>
+        <view class="body-view">
+            <button type="default" bindtap="getWifiList">getWifiList列表</button>
+        </view>
+        <view class="body-view">
+            <button type="default" bindtap="getConnectedWifi">当前连接Wifi</button>
+        </view>
+    </view>
+</view>
